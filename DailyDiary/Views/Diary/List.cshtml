@@ -1,0 +1,47 @@
+﻿@model IEnumerable<DailyDiary.Models.Diary>
+
+@{
+    ViewData["Title"] = "View";
+}
+
+<h1>View</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Diary_Content)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Diary_Entry_Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Author)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Diary_Content)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Diary_Entry_Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Author)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.SrNo">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.SrNo">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.SrNo">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
